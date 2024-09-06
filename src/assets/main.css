@@ -62,12 +62,26 @@
     justify-content: space-between;
     margin-top: 24px;
 }
-.open-task-block {
-
+.open-in-progress-closed-task-item {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 161px;
+    height: 48px;
+    padding: 12px 24px 12px 24px;
+    border-radius: 50px;
+    border: 1px solid #EAEAEA
 }
-.in-progress-task-block {
-
+.open-in-progress-closed-task-item-text {
+    font-family: "PT Sans Caption", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #333333;
 }
-.in-progress-task-block {
-
+.open-in-progress-closed-task-item-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
 }

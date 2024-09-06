@@ -11,9 +11,18 @@
             Текущие задачи
           </div>
           <div class="d-flex flex-row open-in-progress-closed-task-block">
-            <div class="open-task-block">Открыто - x</div>
-            <div class="in-progress-task-block">В работе - x</div>
-            <div class="closed-task-block">Закрыто - x</div>
+            <div class="d-flex flex-row open-in-progress-closed-task-item">
+              <img class="open-in-progress-closed-task-item-img" src="/blue-info.svg" alt="info_icon">
+              <div class="open-in-progress-closed-task-item-text">Открыто - x</div>
+            </div>
+            <div class="d-flex flex-row open-in-progress-closed-task-item">
+              <img class="open-in-progress-closed-task-item-img" src="/orange-info.svg" alt="info_icon">
+              <div class="open-in-progress-closed-task-item-text">В работе - x</div>
+            </div>
+            <div class="d-flex flex-row open-in-progress-closed-task-item">
+              <img class="open-in-progress-closed-task-item-img" src="/green-info.svg" alt="info_icon">
+              <div class="open-in-progress-closed-task-item-text">Закрыто - x</div>
+            </div>
           </div>
         </div>
         <div class="d-flex flex-column add-task-block">
