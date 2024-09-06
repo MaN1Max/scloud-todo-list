@@ -1,0 +1,73 @@
+.border {
+    border: 1px solid black;
+}
+.d-flex {
+    display: flex;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
+
+
+.upper-bg-frame {
+    width: auto;
+    height: 790px;
+    background: #F4F4F4;
+}
+.content-container {
+    margin: 0 auto;
+    width: 1200px;
+}
+.header-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: left;
+    margin-top: 64px;
+    color: #333333;
+}
+.current-task-n-add-task-block {
+    justify-content: space-between;
+    margin-top: 48px;
+}
+.current-task-block {
+    box-sizing: border-box;
+    width: 588px;
+    height: 184px;
+    padding: 40px 24px 40px 24px;
+    border-radius: 48px;
+    background-color: #FFFFFF;
+}
+.add-task-block{
+    box-sizing: border-box;
+    width: 588px;
+    height: 184px;
+    padding: 40px 24px 40px 24px;
+    border-radius: 48px;
+    background-color: #FFFFFF;
+}
+.current-task-n-add-task-text {
+    font-family: "PT Sans Caption", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: left;
+    color: #333333;
+}
+.open-in-progress-closed-task-block {
+    justify-content: space-between;
+    margin-top: 24px;
+}
+.open-task-block {
+
+}
+.in-progress-task-block {
+
+}
+.in-progress-task-block {
+
+}
