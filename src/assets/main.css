@@ -130,6 +130,7 @@
     height: 330px;
     padding: 40px 40px;
     margin-top: 60px;
+    margin-bottom: 40px;
     border-radius: 48px;
     background-color: #FFFFFF;
 }
@@ -192,7 +193,6 @@
     justify-content: center;
     width: 193px;
     height: 48px;
-    margin-top: 40px;
     margin-bottom: 40px;
     padding: 12px 32px 12px 32px;
     border-radius: 50px;
@@ -210,3 +210,63 @@
 }
 
 
+.task-desk-block {
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 48px;
+}
+.task-desk-item-block {
+
+}
+.task-desk-item-label {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 48px;
+    padding: 5px 24px 5px 24px;
+    border-radius: 39px;
+    background: #F4F4F4;
+    font-family: "PT Sans Caption", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #333333;
+}
+.task-desk-item-list-block {
+    box-sizing: border-box;
+    width: 389px;
+    min-height: 280px;
+    padding: 16px;
+    gap: 16px;
+    margin-top: 24px;
+    border-radius: 24px;
+    background: #EAEAEA80;
+}
+.task-desk-item-in-list {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 72px;
+    padding: 24px 32px 24px 32px;
+    border-radius: 24px;
+    background: #FFFFFF;
+    border: 2px solid #EAEAEA;
+    font-family: "PT Sans Caption", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+    overflow-wrap: break-word;
+    cursor: pointer;
+}
+
+
+.footer-block {
+    box-sizing: border-box;
+    width: 100%;
+    height: 144px;
+    margin-top: 64px;
+    padding: 60px 60px 40px 60px;
+    border-radius: 48px 48px 0px 0px;
+    background: #BBB8B6;
+}
