@@ -3,7 +3,7 @@
 
 <template>
   <div class="d-flex upper-bg-frame">
-    <div class="d-flex flex-column content-container border">
+    <div class="d-flex flex-column content-container">
       <h1 class="header-text">ToDo List Scloud</h1>
       <div class="d-flex flex-row current-task-n-add-task-block">
         <div class="d-flex flex-column current-task-block">
@@ -29,12 +29,71 @@
           <div class="current-task-n-add-task-text">
             Добавить задачу
           </div>
+          <div class="d-flex flex-row add-task-n-task-input-block">
+            <button class="d-flex add-task-button">
+              <img class="add-task-button-img" src="/add-task-cross.svg" alt="cross_icon">
+            </button>
+            <input class="add-task-input" type="search" placeholder="Текст">
+          </div>
         </div>
       </div>
+      <div class="d-flex flex-column task-n-status-block">
+        <div class="d-flex flex-row task-n-status-block-head-text">
+          <div>Задачи</div>
+          <div>Статус</div>
+        </div>
+        <div class="d-flex flex-column task-n-status-list-block">
+          <div class="d-flex flex-row task-n-status-list-text-n-button-block">
+            <div class="task-n-status-list-text">Проснуться, улыбнуться, сделать отжимания, слетать на Марс и прочитать книгу</div>
+            <div class="d-flex task-n-status-list-button-wrapper">
+              <button class="task-n-status-list-button">
+                Открыт
+              </button>
+            </div>
+          </div>
+          <div class="task-n-status-list-separator"></div>
+          <div class="d-flex flex-row task-n-status-list-text-n-button-block">
+            <div class="task-n-status-list-text">Проснуться, улыбнуться, сделать отжимания, слетать на Марс и прочитать книгу</div>
+            <div class="d-flex task-n-status-list-button-wrapper">
+              <button class="task-n-status-list-button">
+                Закрыт
+              </button>
+            </div>
+          </div>
+          <div class="task-n-status-list-separator"></div>
+          <div class="d-flex flex-row task-n-status-list-text-n-button-block">
+            <div class="task-n-status-list-text">Проснуться, улыбнуться, сделать отжимания, слетать на Марс и прочитать книгу</div>
+            <div class="d-flex task-n-status-list-button-wrapper">
+              <button class="task-n-status-list-button">
+                В работе
+              </button>
+            </div>
+          </div>
+          <div class="task-n-status-list-separator"></div>
+          <div class="d-flex flex-row task-n-status-list-text-n-button-block">
+            <div class="task-n-status-list-text">Проснуться, улыбнуться, сделать отжимания, слетать на Марс и прочитать книгу</div>
+            <div class="d-flex task-n-status-list-button-wrapper">
+              <button class="task-n-status-list-button">
+                В работе
+              </button>
+            </div>
+          </div>
+          <div class="task-n-status-list-separator"></div>
+          <div class="d-flex flex-row task-n-status-list-text-n-button-block">
+            <div class="task-n-status-list-text">Проснуться, улыбнуться, сделать отжимания, слетать на Марс и прочитать книгу</div>
+            <div class="d-flex task-n-status-list-button-wrapper">
+              <button class="task-n-status-list-button">
+                В работе
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="d-flex flex-row show-more-tasks-button">
+        Показать ещё
+        <img class="show-icon" src="/show-hide-icon.svg" alt="show_hide_icon">
+      </button>
     </div>
   </div>
+  
 </template>
-
-<style scoped>
-  @import "./assets/main.css";
-</style>
