@@ -1,51 +1,52 @@
 <script setup>
 import { defineProps } from 'vue';
 
-const { isOpen } = defineProps({
+const props = defineProps({
   isOpen: Boolean,
+  closeModal: Function,
+  modalCurrentTask: Object,
+  modalCurrentKey: Number,
+  deleteTask: Function,
+  statusChange: Function,
+  submitChanges: Function,
+  taskNameChange: Function,
+  modalCurrentName: String,
+  modalActiveStatus: String
 });
 </script>
 
 <template>
-  <div v-if="isOpen" class="modal-mask">
-    <div class="modal-wrapper">
-      <div ref="target" class="modal-container">
-        <div class="modal-header">
-          <slot name="header"> default header</slot>
+  <div v-if="props.isOpen" class="d-flex modal-bg">
+    <div class="d-flex flex-column modal-block">
+      <div class="d-flex modal-header">
+        Изменение задачи
+        <button class="d-flex close-modal-button" @click="props.closeModal">
+          <img class="close-modal-button-img" src="/close-modal-icon.svg" alt="close-modal-icon">
+        </button>
+      </div>
+      <div class="d-flex flex-column modal-body">
+        <input class="modal-input" type="text" placeholder="Текст" @change="props.taskNameChange" :value="props.modalCurrentName || props.modalCurrentTask.name">
+        <div class="modal-separator"></div>
+        <div class="d-flex modal-status-buttons-block">
+          <button :class="props.modalActiveStatus === 'Открыт' ? 'modal-status-button active' : 'modal-status-button'" @click="props.statusChange('Открыт')">
+            Отложить
+          </button>
+          <button :class="props.modalActiveStatus === 'В работе' ? 'modal-status-button active' : 'modal-status-button'" @click="props.statusChange('В работе')">
+            В работу
+          </button>
+          <button :class="props.modalActiveStatus === 'Закрыт' ? 'modal-status-button active' : 'modal-status-button'" @click="props.statusChange('Закрыт')">
+            Закрыть
+          </button>
         </div>
-        <div class="modal-body">
-          <slot name="content"> default content</slot>
-        </div>
-        <div class="modal-footer">
-          <slot name="footer"> default footer</slot>
+        <div class="d-flex modal-save-n-delete-task-block">
+          <button class="d-flex modal-save-task-button" @click="props.submitChanges">
+            Применить
+          </button>
+          <button class="d-flex modal-delete-task-button" @click="props.deleteTask">
+            Удалить задачу
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-
-.modal-wrapper {
-  display: flex;
-}
-
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-container {
-  width: fit-content;
-  margin: 30vh auto;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-}
-</style>

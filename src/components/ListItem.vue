@@ -1,6 +1,8 @@
 <script setup>
 const props = defineProps({
-  task: Object
+  task: Object,
+  currentKey: Number,
+  openModal: Function
 });
 </script>
 
@@ -8,7 +10,7 @@ const props = defineProps({
   <div class="d-flex flex-row task-n-status-list-text-n-button-block">
     <div class="task-n-status-list-text">{{ props.task.name }}</div>
     <div class="d-flex task-n-status-list-button-wrapper">
-      <button class="task-n-status-list-button">
+      <button class="task-n-status-list-button" @click="openModal(props.task, props.currentKey)">
         {{ props.task.status }}
       </button>
     </div>
