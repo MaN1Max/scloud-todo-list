@@ -97,3 +97,65 @@ const submitChanges = () => {
          :modalCurrentName="modalCurrentName"
          :modalActiveStatus="modalActiveStatus"/>
 </template>
+
+<style scoped>
+.d-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.task-n-status-block {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 40px 40px;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  border-radius: 48px;
+  background-color: #FFFFFF;
+}
+.empty-list-text {
+  font-family: "PT Sans Caption", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  color: #333333;
+}
+.task-n-status-block-head-text {
+  justify-content: space-between;
+  margin-right: 25px;
+  font-family: "PT Sans Caption", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  color: #333333;
+}
+.task-n-status-list-block {
+  width: 100%;
+  height: 100%;
+  margin-top: 14px;
+}
+.show-more-tasks-button {
+  align-items: center;
+  justify-content: center;
+  width: 193px;
+  height: 48px;
+  margin-bottom: 40px;
+  padding: 12px 32px 12px 32px;
+  border-radius: 50px;
+  border: 2px solid #FF6600;
+  background-color: #FFFFFF;
+  font-family: "PT Sans Caption", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  color: #FF6600;
+  cursor: pointer;
+}
+.show-icon {
+  margin-left: 12px;
+}
+</style>
