@@ -80,7 +80,7 @@ const addTask = () => {
 }
 
 .add-task-button-img {
-  width: 20px;
+  width: 28px;
   height: 20px;
   margin: auto;
 }

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import {defineProps} from 'vue';
 
 const props = defineProps({
   isOpen: Boolean,
@@ -21,20 +21,24 @@ const props = defineProps({
       <div class="d-flex modal-header">
         Изменение задачи
         <button class="d-flex close-modal-button" @click="props.closeModal">
-          <img class="close-modal-button-img" src="/close-modal-icon.svg" alt="close-modal-icon">
+          <img alt="close-modal-icon" class="close-modal-button-img" src="/close-modal-icon.svg">
         </button>
       </div>
       <div class="d-flex flex-column modal-body">
-        <input class="modal-input" type="text" placeholder="Текст" @change="props.taskNameChange" :value="props.modalCurrentName || props.modalCurrentTask.name">
+        <input :value="props.modalCurrentName || props.modalCurrentTask.name" class="modal-input" placeholder="Текст" type="text"
+               @change="props.taskNameChange">
         <div class="modal-separator"></div>
         <div class="d-flex modal-status-buttons-block">
-          <button :class="props.modalActiveStatus === 'Открыт' ? 'modal-status-button active' : 'modal-status-button'" @click="props.statusChange('Открыт')">
+          <button :class="props.modalActiveStatus === 'Открыт' ? 'modal-status-button active' : 'modal-status-button'"
+                  @click="props.statusChange('Открыт')">
             Отложить
           </button>
-          <button :class="props.modalActiveStatus === 'В работе' ? 'modal-status-button active' : 'modal-status-button'" @click="props.statusChange('В работе')">
+          <button :class="props.modalActiveStatus === 'В работе' ? 'modal-status-button active' : 'modal-status-button'"
+                  @click="props.statusChange('В работе')">
             В работу
           </button>
-          <button :class="props.modalActiveStatus === 'Закрыт' ? 'modal-status-button active' : 'modal-status-button'" @click="props.statusChange('Закрыт')">
+          <button :class="props.modalActiveStatus === 'Закрыт' ? 'modal-status-button active' : 'modal-status-button'"
+                  @click="props.statusChange('Закрыт')">
             Закрыть
           </button>
         </div>
@@ -55,9 +59,11 @@ const props = defineProps({
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .modal-bg {
   position: fixed;
   z-index: 10;
@@ -68,6 +74,7 @@ const props = defineProps({
   background: #EAEAEA80;
   backdrop-filter: blur(4px);
 }
+
 .modal-block {
   box-sizing: border-box;
   width: 375px;
@@ -77,6 +84,7 @@ const props = defineProps({
   border-radius: 16px;
   background: #FFFFFF;
 }
+
 .modal-header {
   justify-content: space-between;
   align-items: center;
@@ -86,19 +94,23 @@ const props = defineProps({
   line-height: 26px;
   text-align: left;
 }
+
 .close-modal-button {
   background: transparent;
   border: none;
   cursor: pointer;
 }
+
 .close-modal-button-img {
   width: 24px;
   height: 24px;
   margin: auto;
 }
+
 .modal-body {
   margin-top: 24px;
 }
+
 .modal-input {
   box-sizing: border-box;
   width: 100%;
@@ -107,6 +119,7 @@ const props = defineProps({
   border-radius: 24px;
   border: 1px solid #F4F4F4;
 }
+
 .modal-input::placeholder {
   font-family: "PT Sans Caption", sans-serif;
   font-weight: 400;
@@ -114,15 +127,18 @@ const props = defineProps({
   line-height: 24px;
   color: #333333;
 }
+
 .modal-separator {
   width: 100%;
   margin-top: 16px;
   border: 1px solid #EAEAEA;
 }
+
 .modal-status-buttons-block {
   margin-top: 16px;
   gap: 8px;
 }
+
 .modal-status-button {
   min-height: 28px;
   padding: 5px 16px 5px 16px;
@@ -136,13 +152,16 @@ const props = defineProps({
   line-height: 20px;
   color: #333333;
 }
+
 .modal-status-button.active {
   border: 1px solid #FF6600;
 }
+
 .modal-save-n-delete-task-block {
   margin-top: 24px;
   justify-content: space-between;
 }
+
 .modal-save-task-button {
   width: fit-content;
   align-items: center;
@@ -159,6 +178,7 @@ const props = defineProps({
   color: #FFFFFF;
   cursor: pointer;
 }
+
 .modal-delete-task-button {
   width: fit-content;
   align-items: center;

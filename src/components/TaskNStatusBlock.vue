@@ -2,6 +2,7 @@
 import ListItem from "@/components/ListItem.vue";
 import Modal from "@/components/Modal.vue";
 import {ref} from "vue";
+import ListItemMobile from "@/components/ListItemMobile.vue";
 
 const props = defineProps({
   tasks: Array
@@ -25,8 +26,8 @@ const isEmptyArr = () => {
 };
 const showHideButton = () => {
   shownAll.value = !shownAll.value;
-  if(shownAll.value === false)
-    anchor.value.scrollIntoView({ behavior: "smooth" });
+  if (shownAll.value === false)
+    anchor.value.scrollIntoView({behavior: "smooth"});
 };
 const openModal = (task, key) => {
   modalCurrentTask.value = task;
@@ -59,52 +60,85 @@ const submitChanges = () => {
 
 <template>
   <div ref="anchor"></div>
-  <div v-show="isEmptyArr()" class="d-flex flex-column task-n-status-block empty-list-text">
-    Похоже, что на данный момент задач нет...
-  </div>
-  <div v-show="!isEmptyArr()" class="d-flex flex-column task-n-status-block">
-    <div class="d-flex flex-row task-n-status-block-head-text">
-      <div>Задачи</div>
-      <div>Статус</div>
+  <div class="d-flex flex-column task-n-status-block-desktop">
+    <div v-show="isEmptyArr()" class="d-flex flex-column task-n-status-block empty-list-text">
+      Похоже, что на данный момент задач нет...
     </div>
-    <div class="d-flex flex-column task-n-status-list-block">
-      <template v-if="isFiveTasksInArr() && !shownAll" v-for="index in 5" :key="index">
-        <ListItem :task="props.tasks[index-1]" :openModal="openModal" :currentKey="index-1"/>
+    <div v-show="!isEmptyArr()" class="d-flex flex-column task-n-status-block">
+      <div class="d-flex flex-row task-n-status-block-head-text">
+        <div>Задачи</div>
+        <div>Статус</div>
+      </div>
+      <div class="d-flex flex-column task-n-status-list-block">
+        <template v-for="index in 5" v-if="isFiveTasksInArr() && !shownAll" :key="index">
+          <ListItem :currentKey="index-1" :openModal="openModal" :task="props.tasks[index-1]"/>
+        </template>
+        <template
+            v-for="(task, index) in props.tasks"
+            v-if="(isFiveTasksInArr() && shownAll) || (!isFiveTasksInArr() && shownAll) || (!isFiveTasksInArr() && !shownAll)"
+            :key="index">
+          <ListItem :currentKey="+index" :openModal="openModal" :task="task"/>
+        </template>
+      </div>
+    </div>
+  </div>
+  <div class="flex-column task-n-status-block-mobile">
+    <div class="header-text">Задачи</div>
+    <div v-show="isEmptyArr()" class="d-flex flex-column task-n-status-block empty-list-text">
+      Похоже, что на данный момент задач нет...
+    </div>
+    <div class="flex-column task-n-status-list-block-mobile">
+      <template v-for="index in 5" v-if="isFiveTasksInArr() && !shownAll" :key="index">
+        <ListItemMobile :currentKey="index-1" :openModal="openModal" :task="props.tasks[index-1]"/>
       </template>
-      <template v-if="(isFiveTasksInArr() && shownAll) || (!isFiveTasksInArr() && shownAll) || (!isFiveTasksInArr() && !shownAll)"
-                v-for="(task, index) in props.tasks"
-                :key="index">
-        <ListItem :task="task" :openModal="openModal" :currentKey="+index"/>
+      <template
+          v-for="(task, index) in props.tasks"
+          v-if="(isFiveTasksInArr() && shownAll) || (!isFiveTasksInArr() && shownAll) || (!isFiveTasksInArr() && !shownAll)"
+          :key="index">
+        <ListItemMobile :currentKey="+index" :openModal="openModal" :task="task"/>
       </template>
     </div>
   </div>
-  <button class="d-flex flex-row show-more-tasks-button"
-          v-show="isFiveTasksInArr()"
+  <button v-show="isFiveTasksInArr()"
+          class="d-flex flex-row show-more-tasks-button"
           @click="showHideButton">
     <span v-if="!shownAll">Показать ещё</span>
     <span v-if="shownAll">Скрыть</span>
-    <img v-if="!shownAll" class="show-icon" src="/show-hide-icon.svg" alt="show_hide_icon">
-    <img v-if="shownAll" class="show-icon" src="/show-hide-icon.svg" alt="show_hide_icon" style="transform: rotate(180deg)">
+    <img v-if="!shownAll" alt="show_hide_icon" class="show-icon" src="/show-hide-icon.svg">
+    <img v-if="shownAll" alt="show_hide_icon" class="show-icon" src="/show-hide-icon.svg"
+         style="transform: rotate(180deg)">
   </button>
-  <Modal :isOpen="modalOpened"
-         :closeModal="closeModal"
-         :modalCurrentTask="modalCurrentTask"
-         :modalCurrentKey="modalCurrentKey"
+  <Modal :closeModal="closeModal"
          :deleteTask="deleteTask"
+         :isOpen="modalOpened"
+         :modalActiveStatus="modalActiveStatus"
+         :modalCurrentKey="modalCurrentKey"
+         :modalCurrentName="modalCurrentName"
+         :modalCurrentTask="modalCurrentTask"
          :statusChange="statusChange"
          :submitChanges="submitChanges"
-         :taskNameChange="taskNameChange"
-         :modalCurrentName="modalCurrentName"
-         :modalActiveStatus="modalActiveStatus"/>
+         :taskNameChange="taskNameChange"/>
 </template>
 
 <style scoped>
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
+.header-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: left;
+  margin-top: 64px;
+  color: #333333;
+}
+
 .task-n-status-block {
   box-sizing: border-box;
   width: 100%;
@@ -115,6 +149,11 @@ const submitChanges = () => {
   border-radius: 48px;
   background-color: #FFFFFF;
 }
+
+.task-n-status-block-mobile {
+  display: none;
+}
+
 .empty-list-text {
   font-family: "PT Sans Caption", sans-serif;
   font-weight: 700;
@@ -123,6 +162,7 @@ const submitChanges = () => {
   text-align: center;
   color: #333333;
 }
+
 .task-n-status-block-head-text {
   justify-content: space-between;
   margin-right: 25px;
@@ -133,11 +173,21 @@ const submitChanges = () => {
   text-align: center;
   color: #333333;
 }
+
 .task-n-status-list-block {
   width: 100%;
   height: 100%;
   margin-top: 14px;
 }
+
+.task-n-status-list-block-mobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin-top: 48px;
+  margin-bottom: 40px;
+}
+
 .show-more-tasks-button {
   align-items: center;
   justify-content: center;
@@ -155,7 +205,22 @@ const submitChanges = () => {
   color: #FF6600;
   cursor: pointer;
 }
+
 .show-icon {
   margin-left: 12px;
+}
+
+@media screen and (max-width: 659px) {
+  .task-n-status-block-desktop {
+    display: none;
+  }
+
+  .task-n-status-block-mobile {
+    display: flex;
+  }
+
+  .task-n-status-list-block-mobile {
+    display: flex;
+  }
 }
 </style>
