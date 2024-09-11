@@ -22,12 +22,14 @@ const props = defineProps({
 .d-flex {
   display: flex;
 }
+
 .task-n-status-list-text-n-button-block {
   margin-top: 8px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
+
 .task-n-status-list-text {
   width: 90%;
   font-family: "PT Sans Caption", sans-serif;
@@ -39,9 +41,11 @@ const props = defineProps({
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .task-n-status-list-button-wrapper {
   width: 102px;
 }
+
 .task-n-status-list-button {
   margin: auto;
   height: 28px;
@@ -56,6 +60,7 @@ const props = defineProps({
   line-height: 20px;
   color: #333333;
 }
+
 .task-n-status-list-separator {
   width: 100%;
   margin-top: 8px;

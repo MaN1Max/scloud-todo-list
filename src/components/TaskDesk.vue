@@ -14,36 +14,50 @@ const drop = (event, newStatus) => {
 </script>
 
 <template>
-  <h2 class="header-text">Доска задач</h2>
-  <div class="d-flex flex-row task-desk-block">
-    <div class="d-flex flex-column task-desk-item-block">
-      <div class="d-flex task-desk-item-label">Открыто</div>
-      <div class="d-flex flex-column task-desk-item-list-block" @drop="drop($event, 'Открыт')" @dragover.prevent @dragenter.prevent>
-        <template v-for="(task, index) in props.tasks" :key="index">
-          <div v-if="task.status === 'Открыт'" class="task-desk-item-in-list" draggable="true" @dragstart="dragStart($event, index)">
-            {{ task.name }}
-          </div>
-        </template>
+  <div class="is-task-desk-shown">
+    <h2 class="d-flex header-text">Доска задач</h2>
+    <div class="d-flex flex-row task-desk-block">
+      <div class="d-flex flex-column task-desk-item-block">
+        <div class="d-flex task-desk-item-label-wrapper">
+          <div class="d-flex task-desk-item-label">Открыто</div>
+        </div>
+        <div class="d-flex flex-column task-desk-item-list-block" @drop="drop($event, 'Открыт')" @dragover.prevent
+             @dragenter.prevent>
+          <template v-for="(task, index) in props.tasks" :key="index">
+            <div v-if="task.status === 'Открыт'" class="task-desk-item-in-list" draggable="true"
+                 @dragstart="dragStart($event, index)">
+              {{ task.name }}
+            </div>
+          </template>
+        </div>
       </div>
-    </div>
-    <div class="d-flex flex-column task-desk-item-block">
-      <div class="d-flex task-desk-item-label">В работе</div>
-      <div class="d-flex flex-column task-desk-item-list-block" @drop="drop($event, 'В работе')" @dragover.prevent @dragenter.prevent>
-        <template v-for="(task, index) in props.tasks" :key="index">
-          <div v-if="task.status === 'В работе'" class="task-desk-item-in-list" draggable="true" @dragstart="dragStart($event, index)">
-            {{ task.name }}
-          </div>
-        </template>
+      <div class="d-flex flex-column task-desk-item-block">
+        <div class="d-flex task-desk-item-label-wrapper">
+          <div class="d-flex task-desk-item-label">В работе</div>
+        </div>
+        <div class="d-flex flex-column task-desk-item-list-block" @drop="drop($event, 'В работе')" @dragover.prevent
+             @dragenter.prevent>
+          <template v-for="(task, index) in props.tasks" :key="index">
+            <div v-if="task.status === 'В работе'" class="task-desk-item-in-list" draggable="true"
+                 @dragstart="dragStart($event, index)">
+              {{ task.name }}
+            </div>
+          </template>
+        </div>
       </div>
-    </div>
-    <div class="d-flex flex-column task-desk-item-block">
-      <div class="d-flex task-desk-item-label">Закрыто</div>
-      <div class="d-flex flex-column task-desk-item-list-block" @drop="drop($event, 'Закрыт')" @dragover.prevent @dragenter.prevent>
-        <template v-for="(task, index) in props.tasks" :key="index">
-          <div v-if="task.status === 'Закрыт'" class="task-desk-item-in-list" draggable="true" @dragstart="dragStart($event, index)">
-            {{ task.name }}
-          </div>
-        </template>
+      <div class="d-flex flex-column task-desk-item-block">
+        <div class="d-flex task-desk-item-label-wrapper">
+          <div class="d-flex task-desk-item-label">Закрыто</div>
+        </div>
+        <div class="d-flex flex-column task-desk-item-list-block" @drop="drop($event, 'Закрыт')" @dragover.prevent
+             @dragenter.prevent>
+          <template v-for="(task, index) in props.tasks" :key="index">
+            <div v-if="task.status === 'Закрыт'" class="task-desk-item-in-list" draggable="true"
+                 @dragstart="dragStart($event, index)">
+              {{ task.name }}
+            </div>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -53,10 +67,13 @@ const drop = (event, newStatus) => {
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .header-text {
+  width: 100%;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 32px;
@@ -65,14 +82,23 @@ const drop = (event, newStatus) => {
   margin-top: 64px;
   color: #333333;
 }
+
 .task-desk-block {
   justify-content: space-between;
   width: 100%;
   margin-top: 48px;
+  gap: 16px;
 }
-.task-desk-item-block {
 
+.task-desk-item-block {
+  width: 100%;
+  min-width: 250px;
 }
+
+.task-desk-item-label-wrapper {
+  width: 100%;
+}
+
 .task-desk-item-label {
   box-sizing: border-box;
   justify-content: center;
@@ -88,9 +114,10 @@ const drop = (event, newStatus) => {
   line-height: 28px;
   color: #333333;
 }
+
 .task-desk-item-list-block {
   box-sizing: border-box;
-  width: 389px;
+  width: 100%;
   min-height: 280px;
   padding: 16px;
   gap: 16px;
@@ -98,6 +125,7 @@ const drop = (event, newStatus) => {
   border-radius: 24px;
   background: #EAEAEA80;
 }
+
 .task-desk-item-in-list {
   box-sizing: border-box;
   width: 100%;
@@ -113,5 +141,11 @@ const drop = (event, newStatus) => {
   color: #333333;
   overflow-wrap: break-word;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1221px) {
+  .is-task-desk-shown {
+    display: none;
+  }
 }
 </style>
